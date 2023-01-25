@@ -44,6 +44,10 @@ body {
       width: 100%;
       user-select: none;
 
+      &.focused {
+        box-shadow: rgba(255, 128, 0, 0.5) 0 0 8px 2px;
+      }
+
       tr {
         &:nth-child(odd) td {
           background-color: #29292910;

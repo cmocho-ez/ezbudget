@@ -13,23 +13,59 @@ function Initialize() {
     });
   }
 
-  function handleNewIncome() {
-    const $btn = document.querySelector('[name="btnNewIncome"]');
-    const $tableIncome = document.querySelector('[name="tableIncome"]');
-
+  function bindTableAndButton($table, $btn, newRowTemplate) {
     $btn.addEventListener('click', () => {
       const $newRow = document.createElement('tr');
 
-      $newRow.innerHTML = `<td></td><td></td><td></td><td></td><td></td><td>&nbsp;</td>`;
-      $tableIncome.querySelector('tbody').appendChild($newRow);
+      $newRow.innerHTML = newRowTemplate;
+      $table.querySelector('tbody').appendChild($newRow);
     });
   }
 
+  function handleNewIncome() {
+    const $btn = document.querySelector('[name="btnNewIncome"]');
+    const $table = document.querySelector('[name="tableIncome"]');
+    const template = `<td></td><td></td><td></td><td></td><td></td><td>&nbsp;</td>`;
+
+    bindTableAndButton($table, $btn, template);
+  }
+
+  function handleNewRecurring() {
+    const $btn = document.querySelector('[name="btnNewRecurringExpense"]');
+    const $table = document.querySelector('[name="tableRecurringExpenses"]');
+    const template = `<td></td><td></td><td></td><td></td><td></td><td>&nbsp;</td>`;
+
+    bindTableAndButton($table, $btn, template);
+  }
+
+  function handleNewInstallment() {
+    const $btn = document.querySelector('[name="btnNewInstallment"]');
+    const $table = document.querySelector('[name="tableInstallments"]');
+    const template = `<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>&nbsp;</td>`;
+
+    bindTableAndButton($table, $btn, template);
+  }
+
+  function handleNewExtra() {
+    const $btn = document.querySelector('[name="btnNewCasualExpense"]');
+    const $table = document.querySelector('[name="tableCasualExpenses"]');
+    const template = `<td></td><td></td><td></td><td></td><td></td><td>&nbsp;</td>`;
+
+    bindTableAndButton($table, $btn, template);
+  }
+
   function handleTableEvents() {
+    handleNewIncome();
+    handleNewRecurring();
+    handleNewInstallment();
+    handleNewExtra();
+
     const $tables = document.querySelectorAll('table');
 
     function setFocusEvent(e) {
+      $tableInFocus?.classList?.remove('focused');
       $tableInFocus = this;
+      $tableInFocus.classList.add('focused');
     }
 
     function editCellEvent(e) {
@@ -51,7 +87,6 @@ function Initialize() {
   }
 
   handleYear();
-  handleNewIncome();
   handleTableEvents();
 }
 
