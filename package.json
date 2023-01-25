@@ -1,0 +1,8 @@
+{
+  "name": "ezbudget",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Cristian Mocho <cristian@computech.ie>",
+  "license": "MIT",
+  "private": true
+}
