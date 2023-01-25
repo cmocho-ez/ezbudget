@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="scripts/components.js" type="module"></script>
+  <link rel="stylesheet" href="styles/main.css">
+
+  <title>ezBudget - Dashboard</title>
+</head>
+
+<body>
+  <div id="app">
+    <header></header>
+    <section class="main">
+      <section class="income">
+        <table>
+          <thead>
+            <tr>
+              <th>Source of income</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <ez-floatingbutton size="1.5rem" icon="plus" color="#366083" icon-color="#eee"></ez-floatingbutton>
+      </section>
+      <section class="fixed-expenses"></section>
+      <section class="installments"></section>
+      <section class="casual-expenses"></section>
+    </section>
+    <footer>
+      <div class="tools"></div>
+      <div class="tabs"></div>
+    </footer>
+  </div>
+</body>
+
+</html>
