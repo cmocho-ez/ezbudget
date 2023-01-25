@@ -11,25 +11,78 @@
 
 html,
 body {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 
 #app {
+  height: 100%;
   font-family: 'Noto Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
     Verdana, sans-serif;
+  display: grid;
+  grid-template-rows: min-content auto min-content;
 
-  table {
-    width: 100%;
+  header {
+    padding: 10px;
+    background-color: #29292910;
+  }
 
-    th,
-    td {
-      padding: 4px;
+  section.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 8px;
+    overflow: hidden;
+
+    .col {
+      display: grid;
+      grid-auto-flow: row;
+      row-gap: 8px;
+      overflow: auto;
     }
 
-    thead th {
-      background-color: #292929;
-      color: #eee;
+    table {
+      width: 100%;
+      user-select: none;
+
+      tr {
+        &:nth-child(odd) td {
+          background-color: #29292910;
+        }
+
+        &:nth-child(even) td {
+          background-color: #29292930;
+        }
+
+        & td,
+        & th {
+          border-bottom: solid 1px #29292950;
+          border-right: solid 1px #fff;
+          padding: 4px;
+        }
+      }
+
+      thead th {
+        background-color: #292929;
+        color: #eee;
+      }
+
+      &[name='tableIncome'] {
+        tr {
+        }
+      }
+    }
+  }
+
+  footer {
+    padding: 10px;
+    background-color: #29292950;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    ul {
+      display: grid;
+      grid-auto-flow: column;
+      justify-items: center;
     }
   }
 }

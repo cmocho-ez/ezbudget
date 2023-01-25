@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="scripts/components.js" type="module"></script>
+  <script src="scripts/main.js" type="module" defer></script>
   <link rel="stylesheet" href="styles/main.css">
 
   <title>ezBudget - Dashboard</title>
@@ -13,27 +14,108 @@
 
 <body>
   <div id="app">
-    <header></header>
+    <header>
+      <h3>ezBudget <span>v.0.0.1</span></h3>
+      <div>
+        <label for="">Year</label>
+        <input type="number" name="year" min="1990" max="2290" />
+      </div>
+    </header>
     <section class="main">
-      <section class="income">
-        <table>
-          <thead>
-            <tr>
-              <th>Source of income</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <ez-floatingbutton size="1.5rem" icon="plus" color="#366083" icon-color="#eee"></ez-floatingbutton>
-      </section>
-      <section class="fixed-expenses"></section>
-      <section class="installments"></section>
-      <section class="casual-expenses"></section>
+      <div class="col">
+        <section class="income">
+          <table name="tableIncome">
+            <thead>
+              <tr>
+                <th>Source of income</th>
+                <th>Value</th>
+                <th>Category</th>
+                <th>Due date</th>
+                <th>Paid on</th>
+                <th><ez-floatingbutton name="btnNewIncome" size="0.6rem" icon="plus" color="#366083"
+                    icon-color="#fff"></ez-floatingbutton></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+        </section>
+        <section class="recurring-expenses">
+          <table name="tableRecurringExpenses">
+            <thead>
+              <tr>
+                <th>Recurring expenses</th>
+                <th>Value</th>
+                <th>Category</th>
+                <th>Due date</th>
+                <th>Paid on</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <ez-floatingbutton name="btnNewRecurringExpense" size="1.5rem" icon="plus" color="#366083"
+            icon-color="#eee"></ez-floatingbutton>
+        </section>
+        <section class="installments">
+          <table name="tableInstallments">
+            <thead>
+              <tr>
+                <th>Installments</th>
+                <th>Value</th>
+                <th>Category</th>
+                <th>Due date</th>
+                <th>Paid on</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <ez-floatingbutton name="btnNewInstallment" size="1.5rem" icon="plus" color="#366083"
+            icon-color="#eee"></ez-floatingbutton>
+        </section>
+        <section class="casual-expenses">
+          <table name="tableCasualExpenses">
+            <thead>
+              <tr>
+                <th>Extra/casual expenses</th>
+                <th>Value</th>
+                <th>Category</th>
+                <th>Due date</th>
+                <th>Paid on</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <ez-floatingbutton name="btnNewCasualExpense" size="1.5rem" icon="plus" color="#366083"
+            icon-color="#eee"></ez-floatingbutton>
+        </section>
+      </div>
+      <div class="col">
+        <h2>Month Results</h2>
+      </div>
     </section>
     <footer>
-      <div class="tools"></div>
-      <div class="tabs"></div>
+      <div class="tools">
+        <ez-floatingbutton size="0.8rem" icon="content-copy"></ez-floatingbutton>
+      </div>
+      <div class="tabs">
+        <ul>
+          <li>Jan</li>
+          <li>Feb</li>
+          <li>Mar</li>
+          <li>Apr</li>
+          <li>May</li>
+          <li>Jun</li>
+          <li>Jul</li>
+          <li>Aug</li>
+          <li>Sep</li>
+          <li>Oct</li>
+          <li>Nov</li>
+          <li>Dec</li>
+        </ul>
+      </div>
     </footer>
   </div>
 </body>

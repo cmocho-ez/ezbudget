@@ -11,7 +11,7 @@ export default class ezFloatButton extends HTMLElement {
   Render() {
     const template = document.createElement('template');
 
-    template.innerHTML = `<link rel="stylesheet" href="styles/button.css"></link><button class="ez-floating-button"><ez-icon size="85%"></ez-icon></button>`;
+    template.innerHTML = `<link rel="stylesheet" href="styles/button.css"></link><button class="ez-floating-button"><ez-icon></ez-icon></button>`;
 
     this.attachShadow({
       mode: 'open',
@@ -41,7 +41,7 @@ export default class ezFloatButton extends HTMLElement {
       case 'size':
         button.style.width = 'calc(14px + ' + newValue + ')';
         button.style.height = button.style.width;
-        icon.setAttribute('size', newValue);
+        icon.setAttribute('size', 'calc(6px + ' + newValue + ')');
         break;
       case 'icon':
         icon.setAttribute('title', newValue);
