@@ -4,6 +4,14 @@ function Initialize() {
     <ez-floatingbutton name="btnMoveUp" size="0.6rem" icon="chevron-up" ></ez-floatingbutton>
     <ez-floatingbutton name="btnMoveDown" size="0.6rem" icon="chevron-down" ></ez-floatingbutton>`;
 
+  const emptyRow = span => {
+    const $tr = document.createElement('tr');
+    $tr.classList.add('no-rows');
+    $tr.innerHTML = `<td colspan="${span}">No rows to show, create new ones</td>`;
+
+    return $tr;
+  };
+
   let $tableInFocus = null;
 
   function handleYear() {
@@ -19,11 +27,15 @@ function Initialize() {
   }
 
   function bindTableAndButton($table, $btn, newRowTemplate) {
-    $btn.addEventListener('click', () => {
-      const $newRow = document.createElement('tr');
+    const $body = $table.querySelector('tbody');
+    const $newRow = document.createElement('tr');
 
-      $newRow.innerHTML = newRowTemplate;
-      $table.querySelector('tbody').appendChild($newRow);
+    $newRow.innerHTML = newRowTemplate;
+    $body.appendChild(emptyRow($newRow.childElementCount));
+
+    $btn.addEventListener('click', () => {
+      if ($body.querySelector('tr.no-rows')) $body.querySelector('tr.no-rows').remove();
+      $body.appendChild($newRow.cloneNode(true));
     });
   }
 

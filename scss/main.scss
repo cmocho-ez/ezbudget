@@ -36,8 +36,12 @@ body {
     .col {
       display: grid;
       grid-auto-flow: row;
-      row-gap: 8px;
+      row-gap: 24px;
       overflow: auto;
+
+      &:first-child {
+        align-content: flex-start;
+      }
     }
 
     table {
@@ -71,6 +75,10 @@ body {
         & th,
         & td:last-child {
           white-space: nowrap;
+        }
+
+        &.no-rows {
+          text-align: center;
         }
       }
 
