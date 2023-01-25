@@ -61,7 +61,16 @@ body {
         & th {
           border-bottom: solid 1px #29292950;
           border-right: solid 1px #fff;
-          padding: 4px;
+          padding: 4px 8px;
+        }
+
+        & td:first-child {
+          width: 100%;
+        }
+
+        & th,
+        & td:last-child {
+          white-space: nowrap;
         }
       }
 
