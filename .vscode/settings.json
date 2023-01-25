@@ -1,0 +1,15 @@
+{
+  "liveSassCompile.settings.compileOnWatch": true,
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "compressed",
+      "extensionName": ".css",
+      "savePath": "/styles",
+    }
+  ],
+  "liveSassCompile.settings.generateMap": false,
+  "liveSassCompile.settings.includeItems": [
+    "/scss/**/*.scss"
+  ],
+  "liveSassCompile.settings.showOutputWindowOn": "Error",
+}
