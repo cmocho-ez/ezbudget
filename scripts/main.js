@@ -13,6 +13,7 @@ function Initialize() {
   };
 
   let $tableInFocus = null;
+  let $currentTab = document.querySelector('footer li.active');
 
   function handleYear() {
     const $year = document.querySelector('[name="year"]');
@@ -103,8 +104,28 @@ function Initialize() {
     });
   }
 
+  function handleTabs() {
+    const $tabs = document.querySelector('footer ul');
+
+    function setFocusEvent(target) {
+      if (target) {
+        $currentTab?.classList?.remove('active');
+        $currentTab = target;
+        $currentTab.classList.add('active');
+      }
+    }
+
+    $tabs.addEventListener('click', e => {
+      let $tab = e.target;
+      if ($tab.nodeName !== 'LI') $tab = e.target.closest('li');
+
+      setFocusEvent($tab);
+    });
+  }
+
   handleYear();
   handleTableEvents();
+  handleTabs();
 }
 
 Initialize();
