@@ -1,6 +1,6 @@
 export default class ezFloatButton extends HTMLElement {
   static get observedAttributes() {
-    return ['color', 'size', 'tooltip', 'icon', 'icon-color'];
+    return ['color', 'size', 'title', 'icon', 'icon-color'];
   }
 
   constructor() {
@@ -11,7 +11,9 @@ export default class ezFloatButton extends HTMLElement {
   Render() {
     const template = document.createElement('template');
 
-    template.innerHTML = `<link rel="stylesheet" href="styles/button.css"></link><button class="ez-floating-button"><ez-icon></ez-icon></button>`;
+    template.innerHTML = `<link rel="stylesheet" href="styles/button.css"></link><button class="ez-floating-button ${this.getAttribute(
+      'class'
+    )}"><ez-icon class="${this.getAttribute('class')}"></ez-icon></button>`;
 
     this.attachShadow({
       mode: 'open',
@@ -20,7 +22,7 @@ export default class ezFloatButton extends HTMLElement {
 
     this.shadowRoot.append(template.content.cloneNode(true));
 
-    if (this.getAttribute('tooltip')) this.Update('tooltip', this.getAttribute('tooltip'));
+    if (this.getAttribute('title')) this.Update('title', this.getAttribute('title'));
     if (this.getAttribute('color')) this.Update('color', this.getAttribute('color'));
     if (this.getAttribute('size')) this.Update('size', this.getAttribute('size'));
     if (this.getAttribute('icon')) this.Update('icon', this.getAttribute('icon'));
@@ -32,8 +34,9 @@ export default class ezFloatButton extends HTMLElement {
     const icon = this.shadowRoot.querySelector('ez-icon');
 
     switch (name) {
-      case 'tooltip':
+      case 'title':
         button.setAttribute('title', newValue);
+        icon.setAttribute('title', newValue);
         break;
       case 'color':
         button.style.backgroundColor = newValue;
@@ -44,7 +47,7 @@ export default class ezFloatButton extends HTMLElement {
         icon.setAttribute('size', 'calc(6px + ' + newValue + ')');
         break;
       case 'icon':
-        icon.setAttribute('title', newValue);
+        icon.setAttribute('icon', newValue);
         break;
       case 'icon-color':
         icon.setAttribute('color', newValue);

@@ -1,9 +1,27 @@
 .ez-floating-button {
   border-radius: 50%;
-  border: solid 1px #00000018;
+  border: solid 1px var(--var-btn-border-color);
   cursor: pointer;
   place-content: center;
-  padding: 0;
+  padding: 3px 0;
+  background-color: var(--var-btn-default-bkg-color);
+  transition: all 0.3s ease-out;
+
+  &.primary {
+    background-color: var(--var-btn-primary-bkg-color);
+    color: var(--var-white);
+    fill: var(--var-white);
+  }
+
+  &.secondary {
+    background-color: var(--var-btn-secondary-bkg-color);
+  }
+
+  &.danger {
+    background-color: var(--var-red);
+    color: var(--var-white);
+    fill: var(--var-white);
+  }
 
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.5) 0 0 12px 1px;

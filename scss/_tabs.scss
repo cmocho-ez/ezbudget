@@ -1,0 +1,42 @@
+ul {
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: center;
+  justify-content: end;
+  padding-right: 12px;
+
+  li {
+    perspective: 100px;
+    position: relative;
+    user-select: none;
+
+    span {
+      color: var(--var-text-default-color);
+      display: block;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-left: solid 1px var(--var-black-20);
+      border-right: solid 1px var(--var-black-20);
+      border-bottom: solid 1px var(--var-black-20);
+      border-radius: 0 0 6px 6px;
+      cursor: pointer;
+      transform: rotateX(340deg) rotateY(0);
+      background-color: var(--var-tab-bkg-color);
+    }
+
+    &:hover span {
+      background-color: var(--var-tab-hover-bkg-color);
+    }
+
+    &.active {
+      z-index: 1;
+
+      span {
+        color: var(--var-text-default-color);
+        font-weight: 600;
+        background-color: var(--var-tab-active-bkg-color);
+        box-shadow: var(--var-black-20) 0 8px 6px 3px;
+      }
+    }
+  }
+}

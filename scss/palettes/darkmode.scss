@@ -1,0 +1,27 @@
+@import 'colors';
+
+#app {
+  --var-app-bkg-color: #3a3a3a;
+  --var-primary-color: #6f9ec5;
+  --var-secondary-color: #ccd7e6;
+  --var-accent-color: #ff800080;
+
+  --var-text-default-color: #e2e8ec;
+  --var-text-invert-color: #292929;
+
+  --var-header-bkg-color: #292929;
+  --var-footer-bkg-color: #29292930;
+
+  --var-tablerow-odd-bkg-color: #ccd7e630;
+  --var-tablerow-even-bkg-color: #ccd7e660;
+  --var-tablerow-hover-bkg-color: #3b465050;
+
+  --var-btn-default-bkg-color: #7e7e7e;
+  --var-btn-border-color: #00000018;
+  --var-btn-primary-bkg-color: #496072;
+  --var-btn-secondary-bkg-color: #697680;
+
+  --var-tab-active-bkg-color: #3a3a3a;
+  --var-tab-hover-bkg-color: #414141;
+  --var-tab-bkg-color: #272727;
+}

@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="scripts/components.js" type="module"></script>
   <script src="scripts/main.js" type="module" defer></script>
+  <link rel="stylesheet" name="mode" href="styles/lightmode.css">
   <link rel="stylesheet" href="styles/main.css">
 
   <title>ezBudget - Dashboard</title>
@@ -20,6 +21,12 @@
         <label for="">Year</label>
         <input type="number" name="year" min="1990" max="2290" />
       </div>
+      <div>
+        <ez-floatingbutton class="primary" name="btnModeToggle" size="1rem" icon="theme-light-dark"
+          title="Toggle dark/light mode"></ez-floatingbutton>
+        <ez-floatingbutton class="secondary" name="btnSignout" size="1rem" icon="logout-variant"
+          title="Sign out"></ez-floatingbutton>
+      </div>
     </header>
     <section class="main">
       <div class="col">
@@ -27,13 +34,17 @@
           <table name="tableIncome">
             <thead>
               <tr>
+                <th><input type="checkbox"></th>
                 <th>Source of income</th>
                 <th>Value</th>
                 <th>Category</th>
                 <th>Due date</th>
                 <th>Paid on</th>
-                <th><ez-floatingbutton name="btnNewIncome" size="0.6rem" icon="plus" color="#366083"
-                    icon-color="#fff"></ez-floatingbutton></th>
+                <th>
+                  <ez-floatingbutton class="primary" name="btnNewIncome" size="0.6rem" icon="plus"
+                    title="New"></ez-floatingbutton>
+                  <ez-floatingbutton size="0.6rem" icon="content-paste" title="Paste"></ez-floatingbutton>
+                </th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -44,13 +55,17 @@
           <table name="tableRecurringExpenses">
             <thead>
               <tr>
+                <th><input type="checkbox"></th>
                 <th>Recurring expenses</th>
                 <th>Value</th>
                 <th>Category</th>
                 <th>Due date</th>
                 <th>Paid on</th>
-                <th><ez-floatingbutton name="btnNewRecurringExpense" size="0.6rem" icon="plus" color="#366083"
-                    icon-color="#eee"></ez-floatingbutton></th>
+                <th>
+                  <ez-floatingbutton class="primary" name="btnNewRecurringExpense" size="0.6rem" icon="plus"
+                    title="New"></ez-floatingbutton>
+                  <ez-floatingbutton size="0.6rem" icon="content-paste" title="Paste"></ez-floatingbutton>
+                </th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -61,6 +76,7 @@
           <table name="tableInstallments">
             <thead>
               <tr>
+                <th><input type="checkbox"></th>
                 <th>Installments</th>
                 <th>Value</th>
                 <th>Category</th>
@@ -68,8 +84,11 @@
                 <th>Of</th>
                 <th>Due date</th>
                 <th>Paid on</th>
-                <th><ez-floatingbutton name="btnNewInstallment" size="0.6rem" icon="plus" color="#366083"
-                    icon-color="#eee"></ez-floatingbutton></th>
+                <th>
+                  <ez-floatingbutton class="primary" name="btnNewInstallment" size="0.6rem" icon="plus"
+                    title="New"></ez-floatingbutton>
+                  <ez-floatingbutton size="0.6rem" icon="content-paste" title="Paste"></ez-floatingbutton>
+                </th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -80,13 +99,17 @@
           <table name="tableCasualExpenses">
             <thead>
               <tr>
+                <th><input type="checkbox"></th>
                 <th>Extra/casual expenses</th>
                 <th>Value</th>
                 <th>Category</th>
                 <th>Due date</th>
                 <th>Paid on</th>
-                <th><ez-floatingbutton name="btnNewCasualExpense" size="0.6rem" icon="plus" color="#366083"
-                    icon-color="#eee"></ez-floatingbutton></th>
+                <th>
+                  <ez-floatingbutton class="primary" name="btnNewCasualExpense" size="0.6rem" icon="plus"
+                    title="New"></ez-floatingbutton>
+                  <ez-floatingbutton size="0.6rem" icon="content-paste" title="Paste"></ez-floatingbutton>
+                </th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -100,11 +123,11 @@
     </section>
     <footer>
       <div class="tools">
-        <ez-floatingbutton size="0.8rem" icon="content-copy"></ez-floatingbutton>
+        <ez-floatingbutton size="0.8rem" icon="content-copy" name="btnCopy"></ez-floatingbutton>
       </div>
       <div class="tabs">
         <ul>
-          <li class="active" name="jan"><span>Jan</span></li>
+          <li name="jan"><span>Jan</span></li>
           <li name="feb"><span>Feb</span></li>
           <li name="mar"><span>Mar</span></li>
           <li name="apr"><span>Apr</span></li>

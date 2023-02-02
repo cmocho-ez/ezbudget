@@ -1,6 +1,6 @@
 function Initialize() {
   const rowButtons = `
-    <ez-floatingbutton name="btnDelete" size="0.6rem" icon="delete-forever" color="#7e1f1f" icon-color="#eee"></ez-floatingbutton>
+    <ez-floatingbutton class="danger" name="btnDelete" size="0.6rem" icon="delete-forever"></ez-floatingbutton>
     <ez-floatingbutton name="btnMoveUp" size="0.6rem" icon="chevron-up" ></ez-floatingbutton>
     <ez-floatingbutton name="btnMoveDown" size="0.6rem" icon="chevron-down" ></ez-floatingbutton>`;
 
@@ -14,6 +14,19 @@ function Initialize() {
 
   let $tableInFocus = null;
   let $currentTab = document.querySelector('footer li.active');
+
+  function handleModeToggler() {
+    const $btn = document.querySelector('[name="btnModeToggle"]');
+    const $link = document.querySelector('link[name="mode"]');
+
+    $btn.addEventListener('click', e => {
+      if ($link.href.indexOf('light') > 0) {
+        $link.href = 'styles/darkmode.css';
+      } else {
+        $link.href = 'styles/lightmode.css';
+      }
+    });
+  }
 
   function handleYear() {
     const $year = document.querySelector('[name="year"]');
@@ -43,7 +56,7 @@ function Initialize() {
   function handleNewIncome() {
     const $btn = document.querySelector('[name="btnNewIncome"]');
     const $table = document.querySelector('[name="tableIncome"]');
-    const template = `<td></td><td></td><td></td><td></td><td></td><td>${rowButtons}</td>`;
+    const template = `<td></td><td></td><td></td><td></td><td></td><td></td><td>${rowButtons}</td>`;
 
     bindTableAndButton($table, $btn, template);
   }
@@ -51,7 +64,7 @@ function Initialize() {
   function handleNewRecurring() {
     const $btn = document.querySelector('[name="btnNewRecurringExpense"]');
     const $table = document.querySelector('[name="tableRecurringExpenses"]');
-    const template = `<td></td><td></td><td></td><td></td><td></td><td>${rowButtons}</td>`;
+    const template = `<td></td><td></td><td></td><td></td><td></td><td></td><td>${rowButtons}</td>`;
 
     bindTableAndButton($table, $btn, template);
   }
@@ -59,7 +72,7 @@ function Initialize() {
   function handleNewInstallment() {
     const $btn = document.querySelector('[name="btnNewInstallment"]');
     const $table = document.querySelector('[name="tableInstallments"]');
-    const template = `<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>${rowButtons}</td>`;
+    const template = `<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>${rowButtons}</td>`;
 
     bindTableAndButton($table, $btn, template);
   }
@@ -67,7 +80,7 @@ function Initialize() {
   function handleNewExtra() {
     const $btn = document.querySelector('[name="btnNewCasualExpense"]');
     const $table = document.querySelector('[name="tableCasualExpenses"]');
-    const template = `<td></td><td></td><td></td><td></td><td></td><td>${rowButtons}</td>`;
+    const template = `<td></td><td></td><td></td><td></td><td></td><td></td><td>${rowButtons}</td>`;
 
     bindTableAndButton($table, $btn, template);
   }
@@ -123,9 +136,45 @@ function Initialize() {
     });
   }
 
+  function handleCopy() {
+    const $btn = document.querySelector('[name="btnCopy"]');
+
+    $btn.addEventListener('click', () => {
+      const ww = document.createElement('ez-workingwidget');
+      document.body.appendChild(ww);
+    });
+  }
+
+  function setMonthTab() {
+    const $tabs = document.querySelector('footer ul');
+    const month = new Date().getMonth() + 1;
+
+    $tabs.querySelector(`li:nth-child(${month})`).click();
+  }
+
+  /**
+   *
+   * @param {object} params Same parameters of fetch
+   * @returns JSON Object
+   */
+  async function ajax(params) {
+    try {
+      const rawData = await fetch(params);
+      const data = await rawData.json();
+
+      return data;
+    } catch (err) {
+      alert(err.message);
+    }
+  }
+
   handleYear();
   handleTableEvents();
   handleTabs();
+  handleCopy();
+  handleModeToggler();
+
+  setMonthTab();
 }
 
 Initialize();
