@@ -12,20 +12,32 @@ function Initialize() {
     return $tr;
   };
 
+  const rawUserPrefs = localStorage.getItem('net.ezsystems.ezbudget.userPrefs');
+
   let $tableInFocus = null;
   let $currentTab = document.querySelector('footer li.active');
-  let $currency = 'R$';
+  let currency = 'R$';
+  let userPrefs = rawUserPrefs ? JSON.parse(rawUserPrefs) : {};
+
+  if (userPrefs.mode === 'dark') toggleMode();
+
+  function toggleMode() {
+    const $link = document.querySelector('link[name="mode"]');
+
+    if ($link.href.indexOf('light') > 0) {
+      $link.href = 'styles/darkmode.css';
+      localStorage.setItem('net.ezsystems.ezbudget.userPrefs', JSON.stringify({ ...userPrefs, mode: 'dark' }));
+    } else {
+      $link.href = 'styles/lightmode.css';
+      localStorage.setItem('net.ezsystems.ezbudget.userPrefs', JSON.stringify({ ...userPrefs, mode: 'light' }));
+    }
+  }
 
   function handleModeToggler() {
     const $btn = document.querySelector('[name="btnModeToggle"]');
-    const $link = document.querySelector('link[name="mode"]');
 
     $btn.addEventListener('click', e => {
-      if ($link.href.indexOf('light') > 0) {
-        $link.href = 'styles/darkmode.css';
-      } else {
-        $link.href = 'styles/lightmode.css';
-      }
+      toggleMode();
     });
   }
 
@@ -152,7 +164,7 @@ function Initialize() {
         alert(e.detail.button.getAttribute('name'));
       });
     });
-    document.querySelectorAll('[name=currency]').forEach(el => (el.innerText = $currency));
+    document.querySelectorAll('[name=currency]').forEach(el => (el.innerText = currency));
   }
 
   function setMonthTab() {
