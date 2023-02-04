@@ -16,7 +16,7 @@
 <body>
   <div id="app">
     <header>
-      <h3>ezBudget <span>v.0.0.1</span></h3>
+      <h3>ezBudget <span>v.0.2.5</span></h3>
       <div>
         <label for="">Year</label>
         <input type="number" name="year" min="1990" max="2290" />
@@ -129,26 +129,10 @@
             <span class="bignumber"><span name="currency"></span>&nbsp;<span name="value">0.00</span></span>
           </ez-card>
           <ez-card color="blue" image="./assets/accounts.png" title="Accounts">
-            <div class="account main">
-              <span class="acc-name">ezSystems Inter</span>
-              <span class="acc-total">R$ 0,00</span>
-            </div>
-            <div class="account">
-              <span class="acc-name">Nu Bank</span>
-              <span class="acc-total">R$ 0,00</span>
-            </div>
-            <div class="account">
-              <span class="acc-name">Wise</span>
-              <span class="acc-total">R$ 0,00</span>
-            </div>
-            <div class="account">
-              <span class="acc-name">Revolut</span>
-              <span class="acc-total">R$ 0,00</span>
-            </div>
-            <div class="account">
-              <span class="acc-name">Poupança</span>
-              <span class="acc-total">R$ 0,00</span>
-            </div>
+            <ez-account label="ezSystems - Inter" main="true" total="R$ 0,01"></ez-account>
+            <ez-account label="Nu Bank" total="R$ 0,00"></ez-account>
+            <ez-account label="Wise" total="&euro; 0,00"></ez-account>
+            <ez-account label="Revolut" total="&euro; 0,00"></ez-account>
           </ez-card>
         </div>
       </div>

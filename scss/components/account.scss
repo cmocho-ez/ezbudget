@@ -1,0 +1,24 @@
+.ez-account {
+  display: grid;
+  grid-template-columns: -webkit-min-content -webkit-min-content;
+  grid-template-columns: 6fr 3fr;
+  white-space: nowrap;
+  padding: 6px 3px;
+  cursor: pointer;
+  overflow: hidden;
+  gap: 6px;
+
+  .acc-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .acc-total {
+    font-weight: 700;
+    text-align: right;
+  }
+
+  &.main {
+    background-color: #86a88870;
+  }
+}
