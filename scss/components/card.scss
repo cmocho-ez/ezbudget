@@ -1,0 +1,40 @@
+.ez-card {
+  display: grid;
+  grid-template-rows: min-content min-content auto min-content;
+  background-color: var(--var-tablerow-even-bkg-color);
+  border: solid 1px var(--var-btn-border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 0 6px 2px;
+
+  section[name='image'] {
+    height: 180px;
+    background: no-repeat center center;
+    background-size: cover;
+  }
+
+  header {
+    font-size: 1.4rem;
+    padding: 6px;
+    color: var(--var-card-header-color);
+    text-shadow: rgba(0, 0, 0, 0.75) 0 0 2px 1px;
+  }
+
+  section[name='body'] {
+    padding: 10px;
+
+    h2,
+    h2 {
+      font-size: 1.3rem;
+      padding: 8px;
+    }
+  }
+
+  section[name='footer'] {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 8px;
+    padding: 10px;
+    background-color: var(--var-footer-bkg-color);
+  }
+}
