@@ -1,6 +1,6 @@
 export default class ezCard extends HTMLElement {
   static get observedAttributes() {
-    return ['title', 'image', 'cta-label'];
+    return ['title', 'image', 'cta-label', 'color'];
   }
 
   constructor() {
@@ -14,13 +14,12 @@ export default class ezCard extends HTMLElement {
     template.innerHTML = `
     <link rel="stylesheet" href="styles/card.css" />
     <div class="ez-card">
-      <section name="image" style="display: none">
-      </section>
+      <section name="image"></section>
       <header></header>
       <section name="body">
         <slot></slot>
       </section>
-      <section name="footer">
+      <section name="footer" style="display: none">
         <ez-floatingbutton class="primary full-length" name="btnClose"></ez-floatingbutton>
       </section>
     </div>`;
@@ -35,6 +34,7 @@ export default class ezCard extends HTMLElement {
     if (this.getAttribute('title')) this.Update('title', this.getAttribute('title'));
     if (this.getAttribute('image')) this.Update('image', this.getAttribute('image'));
     if (this.getAttribute('cta-label')) this.Update('cta-label', this.getAttribute('cta-label'));
+    if (this.getAttribute('color')) this.Update('color', this.getAttribute('color'));
 
     const cta = this.shadowRoot.querySelector('section[name=footer]');
 
@@ -54,6 +54,7 @@ export default class ezCard extends HTMLElement {
   }
 
   Update(name, newValue) {
+    const footer = this.shadowRoot.querySelector('section[name="footer"]');
     const button = this.shadowRoot.querySelector('ez-floatingbutton');
     const header = this.shadowRoot.querySelector('header');
     const image = this.shadowRoot.querySelector('section[name="image"]');
@@ -63,11 +64,15 @@ export default class ezCard extends HTMLElement {
         this.removeAttribute('title');
         header.textContent = newValue;
         break;
+      case 'color':
+        this.shadowRoot.querySelector('.ez-card').classList.add(newValue);
+        break;
       case 'image':
         image.style.backgroundImage = `url(${newValue})`;
         image.style.display = 'block';
         break;
       case 'cta-label':
+        footer.style.display = 'grid';
         button.setAttribute('label', newValue);
         break;
     }
