@@ -70,10 +70,7 @@ body {
       grid-auto-flow: row;
       row-gap: 24px;
       overflow: auto;
-
-      &:first-child {
-        align-content: flex-start;
-      }
+      align-content: flex-start;
 
       h2 {
         font-size: 1.8rem;
@@ -83,7 +80,42 @@ body {
       .stats {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 8px;
+        gap: 20px;
+
+        .bignumber {
+          font-size: 1.8rem;
+          display: block;
+          color: var(--var-secondary-color);
+        }
+
+        .account {
+          display: grid;
+          grid-template-columns: -webkit-min-content -webkit-min-content;
+          grid-template-columns: 6fr 3fr;
+          white-space: nowrap;
+          padding: 6px 3px;
+          cursor: pointer;
+          overflow: hidden;
+          gap: 6px;
+
+          .acc-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .acc-total {
+            font-weight: 700;
+            text-align: right;
+          }
+
+          &.main {
+            background-color: #86a88870;
+          }
+
+          &:nth-child(even) {
+            background-color: #29292930;
+          }
+        }
       }
     }
 

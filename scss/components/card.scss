@@ -1,11 +1,49 @@
-.ez-card {
+.ez-card,
+ez-card {
+  white-space: nowrap;
   display: grid;
+  grid-auto-flow: row;
   grid-template-rows: min-content min-content auto min-content;
+  gap: 8px;
   background-color: var(--var-tablerow-even-bkg-color);
   border: solid 1px var(--var-btn-border-color);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.25) 0 0 6px 2px;
+
+  &.red {
+    background-color: #b71c1c40;
+  }
+  &.green {
+    background-color: #4caf5040;
+  }
+  &.blue {
+    background-color: #0d47a140;
+  }
+  &.purple {
+    background-color: #4a148c40;
+  }
+  &.pink {
+    background-color: #880e4f40;
+  }
+  &.cyan {
+    background-color: #00bcd440;
+  }
+  &.teal {
+    background-color: #00968840;
+  }
+  &.lime {
+    background-color: #9e9d2440;
+  }
+  &.yellow {
+    background-color: #fdd83540;
+  }
+  &.orange {
+    background-color: #f57c0040;
+  }
+  &.brown {
+    background-color: #4e342e40;
+  }
 
   section[name='image'] {
     height: 180px;
@@ -13,21 +51,16 @@
     background-size: cover;
   }
 
+  section[name='body'] {
+    padding: 10px;
+    overflow: auto;
+  }
+
   header {
     font-size: 1.4rem;
     padding: 6px;
     color: var(--var-card-header-color);
     text-shadow: rgba(0, 0, 0, 0.75) 0 0 2px 1px;
-  }
-
-  section[name='body'] {
-    padding: 10px;
-
-    h2,
-    h2 {
-      font-size: 1.3rem;
-      padding: 8px;
-    }
   }
 
   section[name='footer'] {
