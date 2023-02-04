@@ -145,6 +145,34 @@ function Initialize() {
     });
   }
 
+  function handleCardsClick() {
+    const btnOpen = document.createElement('ez-floatingbutton');
+    btnOpen.setAttribute('label', 'Open');
+    btnOpen.setAttribute('name', 'btnOpen');
+    btnOpen.classList.add('primary');
+    btnOpen.classList.add('full-length');
+
+    const btnEdit = document.createElement('ez-floatingbutton');
+    btnEdit.setAttribute('label', 'Edit');
+    btnEdit.setAttribute('name', 'btnEdit');
+    btnEdit.classList.add('full-length');
+
+    const btnRemove = document.createElement('ez-floatingbutton');
+    btnRemove.setAttribute('label', 'Remove');
+    btnRemove.setAttribute('name', 'btnRemove');
+    btnRemove.classList.add('danger');
+    btnRemove.classList.add('full-length');
+
+    const buttons = [btnOpen, btnEdit, btnRemove];
+
+    document.querySelectorAll('ez-card').forEach(el => {
+      el.SetButtons(buttons);
+      el.addEventListener('cta-click', e => {
+        alert(e.detail.button.getAttribute('name'));
+      });
+    });
+  }
+
   function setMonthTab() {
     const $tabs = document.querySelector('footer ul');
     const month = new Date().getMonth() + 1;
@@ -173,6 +201,7 @@ function Initialize() {
   handleTabs();
   handleCopy();
   handleModeToggler();
+  handleCardsClick();
 
   setMonthTab();
 }

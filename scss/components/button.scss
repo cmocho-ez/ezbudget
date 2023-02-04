@@ -1,11 +1,16 @@
 .ez-floating-button {
-  border-radius: 50%;
+  border-radius: 500px;
   border: solid 1px var(--var-btn-border-color);
   cursor: pointer;
   place-content: center;
-  padding: 3px 0;
+  padding: 3px;
   background-color: var(--var-btn-default-bkg-color);
   transition: all 0.3s ease-out;
+
+  span {
+    padding: 6px 10px;
+    font-size: 1rem;
+  }
 
   &.primary {
     background-color: var(--var-btn-primary-bkg-color);
@@ -21,6 +26,10 @@
     background-color: var(--var-red);
     color: var(--var-white);
     fill: var(--var-white);
+  }
+
+  &.full-length {
+    width: 100%;
   }
 
   &:hover {
