@@ -14,6 +14,7 @@ function Initialize() {
 
   let $tableInFocus = null;
   let $currentTab = document.querySelector('footer li.active');
+  let $currency = 'R$';
 
   function handleModeToggler() {
     const $btn = document.querySelector('[name="btnModeToggle"]');
@@ -145,32 +146,13 @@ function Initialize() {
     });
   }
 
-  function handleCardsClick() {
-    const btnOpen = document.createElement('ez-floatingbutton');
-    btnOpen.setAttribute('label', 'Open');
-    btnOpen.setAttribute('name', 'btnOpen');
-    btnOpen.classList.add('primary');
-    btnOpen.classList.add('full-length');
-
-    const btnEdit = document.createElement('ez-floatingbutton');
-    btnEdit.setAttribute('label', 'Edit');
-    btnEdit.setAttribute('name', 'btnEdit');
-    btnEdit.classList.add('full-length');
-
-    const btnRemove = document.createElement('ez-floatingbutton');
-    btnRemove.setAttribute('label', 'Remove');
-    btnRemove.setAttribute('name', 'btnRemove');
-    btnRemove.classList.add('danger');
-    btnRemove.classList.add('full-length');
-
-    const buttons = [btnOpen, btnEdit, btnRemove];
-
+  function handleCards() {
     document.querySelectorAll('ez-card').forEach(el => {
-      el.SetButtons(buttons);
       el.addEventListener('cta-click', e => {
         alert(e.detail.button.getAttribute('name'));
       });
     });
+    document.querySelectorAll('[name=currency]').forEach(el => (el.innerText = $currency));
   }
 
   function setMonthTab() {
@@ -201,7 +183,7 @@ function Initialize() {
   handleTabs();
   handleCopy();
   handleModeToggler();
-  handleCardsClick();
+  handleCards();
 
   setMonthTab();
 }
