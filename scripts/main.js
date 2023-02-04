@@ -149,12 +149,16 @@ function Initialize() {
     });
   }
 
-  function handleCopy() {
-    const $btn = document.querySelector('[name="btnCopy"]');
+  function handleFooterButtons() {
+    // const $btn = document.querySelector('[name="btnCopyLastMonth"]');
+    // const $btn = document.querySelector('[name="btnDeleteSelected"]');
+    // const $btn = document.querySelector('[name="btnNewAccount"]');
+    // const $btn = document.querySelector('[name="btnDeleteAccount"]');
+    const $footer = document.querySelector('footer .tools');
 
-    $btn.addEventListener('click', () => {
-      const ww = document.createElement('ez-workingwidget');
-      document.body.appendChild(ww);
+    $footer.addEventListener('click', e => {
+      let $btn = e.target;
+      if ($btn.nodeName !== 'EZ-FLOATINGBUTTON') $btn.closest('ez-floatingbutton');
     });
   }
 
@@ -172,6 +176,15 @@ function Initialize() {
     const month = new Date().getMonth() + 1;
 
     $tabs.querySelector(`li:nth-child(${month})`).click();
+  }
+
+  function ShowWorking() {
+    const ww = document.createElement('ez-workingwidget');
+    document.body.appendChild(ww);
+  }
+
+  function HideWorking() {
+    document.createElement('ez-workingwidget').remove();
   }
 
   /**
@@ -193,7 +206,7 @@ function Initialize() {
   handleYear();
   handleTableEvents();
   handleTabs();
-  handleCopy();
+  handleFooterButtons();
   handleModeToggler();
   handleCards();
 
