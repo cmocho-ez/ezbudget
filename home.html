@@ -128,8 +128,7 @@
           <ez-card color="blue" image="./assets/results.png" title="Month Result">
             <span class="bignumber"><span name="currency"></span>&nbsp;<span name="value">0.00</span></span>
           </ez-card>
-          <ez-card color="blue" image="./assets/accounts.png" title="Accounts">
-            <ez-account label="ezSystems - Inter" main="true" total="R$ 0,01"></ez-account>
+          <ez-card color="blue" image="./assets/accounts.png" title="Accounts" name="accounts">
           </ez-card>
         </div>
       </div>
@@ -167,20 +166,34 @@
     <section class="body">
       <div class="block">
         <label for="txtAccountName">Account name</label>
-        <input type="text" id="txtAccountName" name="txtAccountName" autofocus maxlength="100" />
+        <input type="text" id="txtAccountName" name="name" data-label="Account name" required autofocus
+          maxlength="100" />
       </div>
       <div class="block">
         <label for="txtBalance">Current balance</label>
-        <input type="number" id="txtBalance" name="txtBalance" maxlength="30" />
+        <input type="number" id="txtBalance" name="balance" maxlength="30" />
       </div>
       <div class="checkbox">
-        <input type="checkbox" id="chkMain" name="chkMain" />
+        <input type="checkbox" id="chkMain" name="main" />
         <label for="chkMain">Main account</label>
       </div>
     </section>
     <footer>
-      <ez-floatingbutton label="Add" class="primary" name="btnClose"></ez-floatingbutton>
+      <ez-floatingbutton label="Add" class="primary" name="btnAdd"></ez-floatingbutton>
       <ez-floatingbutton label="Cancel" class="secondary" name="btnClose"></ez-floatingbutton>
+    </footer>
+  </dialog>
+
+  <dialog id="dlgError">
+    <header>Error</header>
+    <section class="body">
+      <p>Something went wrong!</p>
+      <p name="error"></p>
+    </section>
+    <footer>
+      <form action="dialog">
+        <button formmethod="dialog" type="submit" class="ez-floating-button primary">Close</button>
+      </form>
     </footer>
   </dialog>
 </body>

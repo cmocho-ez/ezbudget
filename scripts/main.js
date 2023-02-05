@@ -1,3 +1,13 @@
+import Services from './services/main-api.js';
+
+window.onerror = function ShowErrorDialog(message) {
+  const dialog = document.querySelector('#dlgError');
+  const p = dialog.querySelector('p[name="error"]');
+  p.textContent = message;
+
+  dialog.showModal();
+};
+
 function Initialize() {
   const rowButtons = `
     <ez-floatingbutton class="danger" name="btnDelete" size="0.6rem" icon="delete-forever"></ez-floatingbutton>
@@ -198,16 +208,65 @@ function Initialize() {
     document.createElement('ez-workingwidget').remove();
   }
 
+  // Dialog buttons handlers
+  function btnAddAccountHandler() {
+    const dialog = this.closest('dialog');
+
+    AddNewAccount(dialog);
+    dialog.close();
+  }
+  function btnCloseHandler() {
+    const dialog = this.closest('dialog');
+    dialog.close();
+  }
+
+  // Dialogs
   function ShowNewAccountDialog() {
     const dialog = document.querySelector('#dlgNewAccount');
-    dialog.querySelector('[name=btnClose]').addEventListener('click', () => {
-      dialog.close();
-    });
+
+    dialog.querySelector('[name=btnAdd]').addEventListener('click', btnAddAccountHandler);
+    dialog.querySelector('[name=btnClose]').addEventListener('click', btnCloseHandler);
 
     dialog.showModal();
   }
 
-  function HideNewAccountDialog() {}
+  function ParseAndValidate(dialog) {
+    const props = Array.from(dialog.querySelectorAll('input[name]'));
+    const result = {};
+
+    props.forEach(el => {
+      if (el.required && !el.value) throw Error(`Missing required field "${el.getAttribute('data-label')}"`);
+
+      if (el.getAttribute('type') === 'number') result[el.name] = Number(el.value);
+      else if (el.getAttribute('type') === 'checkbox') result[el.name] = el.checked;
+      else result[el.name] = el.value;
+    });
+
+    return result;
+  }
+
+  // API-calling functions
+  async function AddNewAccount(dialog) {
+    const account = ParseAndValidate(dialog);
+    const services = new Services();
+
+    await services.SaveAccount(account);
+  }
+
+  async function ListAccounts() {
+    const services = new Services();
+    const accountsData = await services.ListAccounts();
+
+    accountsData.forEach(row => {
+      const account = document.createElement('ez-account');
+      account.setAttribute('id', row.uid);
+      account.setAttribute('label', row.label);
+      account.setAttribute('main', row.main);
+      account.setAttribute('total', `${currency} ${row.balance}`);
+
+      document.querySelector('ez-card[name="accounts"]').appendChild(account);
+    });
+  }
 
   /**
    *
@@ -233,6 +292,9 @@ function Initialize() {
   handleCards();
 
   setMonthTab();
+
+  // Loading data
+  ListAccounts();
 }
 
 Initialize();
