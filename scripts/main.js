@@ -159,6 +159,17 @@ function Initialize() {
     $footer.addEventListener('click', e => {
       let $btn = e.target;
       if ($btn.nodeName !== 'EZ-FLOATINGBUTTON') $btn.closest('ez-floatingbutton');
+
+      const btnName = $btn.getAttribute('name');
+
+      switch (btnName) {
+        case 'btnNewAccount':
+          ShowNewAccountDialog();
+          break;
+
+        default:
+          break;
+      }
     });
   }
 
@@ -186,6 +197,17 @@ function Initialize() {
   function HideWorking() {
     document.createElement('ez-workingwidget').remove();
   }
+
+  function ShowNewAccountDialog() {
+    const dialog = document.querySelector('#dlgNewAccount');
+    dialog.querySelector('[name=btnClose]').addEventListener('click', () => {
+      dialog.close();
+    });
+
+    dialog.showModal();
+  }
+
+  function HideNewAccountDialog() {}
 
   /**
    *
