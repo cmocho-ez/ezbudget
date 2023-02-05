@@ -2,17 +2,18 @@ create database if not exists ezbudget;
 use ezbudget;
 
 create table if not exists accounts (
-    uid varchar(36) not null default (UUID()),
-    label varchar(100) not null,
-    main bool not null DEFAULT 0,
-    balance float not null default 0,
-    primary key (uid)
+  uid varchar(36) not null default (UUID()),
+  label varchar(100) not null,
+  main bool not null DEFAULT 0,
+  balance float not null default 0,
+  primary key (uid)
 );
 
-create table if not exists movements(
-	uid varchar(36) not null default (uuid()),
+create table if not exists transfers (
+  uid varchar(36) not null default (uuid()),
   origin_account_uid varchar(36) not null,
   destination_account_uid varchar(36) not null,
+  made_on datetime not null default (now()),
   value float not null,
   primary key (uid)
 );
