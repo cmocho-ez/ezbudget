@@ -5,7 +5,7 @@
   place-content: center;
   padding: 3px;
   background-color: var(--var-btn-default-bkg-color);
-  transition: all 0.3s ease-out;
+  transition: all 0.1s ease-out;
 
   span {
     padding: 6px 10px;
@@ -33,7 +33,7 @@
   }
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.5) 0 0 12px 1px;
+    box-shadow: var(--var-text-default-color) 0 0 1px 2px;
   }
 
   &:active {
