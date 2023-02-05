@@ -1,6 +1,8 @@
 @import 'colors';
 
-#app {
+body {
+  @include basicColors();
+
   --var-app-bkg-color: #3a3a3a;
   --var-primary-color: #6f9ec5;
   --var-secondary-color: #ccd7e6;
