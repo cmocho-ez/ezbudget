@@ -165,12 +165,18 @@
   <dialog id="dlgNewAccount">
     <header>New Account</header>
     <section class="body">
-      <form action="dialog">
-        <div class="block">
-          <label for="txtAccountName">Account name</label>
-          <input type="text" id="txtAccountName" name="txtAccountName" autofocus maxlength="100" />
-        </div>
-      </form>
+      <div class="block">
+        <label for="txtAccountName">Account name</label>
+        <input type="text" id="txtAccountName" name="txtAccountName" autofocus maxlength="100" />
+      </div>
+      <div class="block">
+        <label for="txtBalance">Current balance</label>
+        <input type="number" id="txtBalance" name="txtBalance" maxlength="30" />
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" id="chkMain" name="chkMain" />
+        <label for="chkMain">Main account</label>
+      </div>
     </section>
     <footer>
       <ez-floatingbutton label="Add" class="primary" name="btnClose"></ez-floatingbutton>
